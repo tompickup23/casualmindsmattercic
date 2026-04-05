@@ -30,4 +30,46 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://casualmindsmattercic.co.uk/news/new-branding-howe-walk.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://casualmindsmattercic.co.uk/news/weekly-support-groups.html</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://casualmindsmattercic.co.uk/news/howe-walk-sign.html</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://casualmindsmattercic.co.uk/news/housing-partnership-nurture.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://casualmindsmattercic.co.uk/news/nhs-mental-health-waits.html</loc>
+    <lastmod>2024-06-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://casualmindsmattercic.co.uk/news/charter-walk-opening.html</loc>
+    <lastmod>2023-10-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://casualmindsmattercic.co.uk/news/jacks-story-music-video.html</loc>
+    <lastmod>2023-02-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
