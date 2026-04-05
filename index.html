@@ -55,104 +55,234 @@
     <style>
         * { font-family: 'Inter', system-ui, sans-serif; }
 
-        /* Smooth reveal animations */
+        /* ===== REVEAL ANIMATIONS ===== */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Staggered children */
-        .reveal-child { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal-left { opacity: 0; transform: translateX(-60px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+
+        .reveal-right { opacity: 0; transform: translateX(60px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+        .reveal-scale { opacity: 0; transform: scale(0.85); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-scale.active { opacity: 1; transform: scale(1); }
+
+        .reveal-child { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal-child.active { opacity: 1; transform: translateY(0); }
 
-        /* Counter animation */
-        .counter { display: inline-block; }
-
-        /* Gradient text */
+        /* ===== GRADIENT TEXT ===== */
         .gradient-text {
-            background: linear-gradient(135deg, #C5DEC5 0%, #7db87d 100%);
+            background: linear-gradient(135deg, #C5DEC5 0%, #7db87d 50%, #C5DEC5 100%);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: shimmer 4s ease infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
         }
 
-        /* Glowing card hover */
+        /* ===== ANIMATED GRADIENT BORDER CARDS ===== */
         .glow-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .glow-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(197, 222, 197, 0.15);
-        }
-
-        /* Parallax hero */
-        .hero-bg {
-            background-attachment: scroll;
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Pulse dot */
-        .pulse-dot {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.2); }
-        }
-
-        /* Nav blur */
-        .nav-blur {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-
-        /* Stat counter underline */
-        .stat-underline {
             position: relative;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
         }
-        .stat-underline::after {
+        .glow-card::before {
             content: '';
             position: absolute;
-            bottom: -4px;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, transparent 0%, rgba(197,222,197,0) 40%, rgba(197,222,197,0.3) 50%, rgba(197,222,197,0) 60%, transparent 100%);
+            background-size: 300% 300%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .glow-card:hover::before {
+            opacity: 1;
+            animation: borderGlow 2s linear infinite;
+        }
+        .glow-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 80px rgba(197, 222, 197, 0.12), 0 0 40px rgba(197, 222, 197, 0.05);
+        }
+        @keyframes borderGlow {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        /* ===== HERO FLOATING ORBS ===== */
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 8s ease-in-out infinite;
+        }
+        .hero-orb-2 { animation-delay: -3s; animation-duration: 10s; }
+        .hero-orb-3 { animation-delay: -5s; animation-duration: 12s; }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -40px) scale(1.1); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(40px, 10px) scale(1.05); }
+        }
+
+        /* ===== HERO TEXT ENTRANCE ===== */
+        .hero-title { opacity: 0; transform: translateY(50px); animation: heroEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; }
+        .hero-subtitle { opacity: 0; transform: translateY(30px); animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards; }
+        .hero-cta { opacity: 0; transform: translateY(20px); animation: heroEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards; }
+        .hero-logo { opacity: 0; transform: scale(0.8) translateY(20px); animation: logoEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; }
+        @keyframes heroEntrance { to { opacity: 1; transform: translateY(0); } }
+        @keyframes logoEntrance { to { opacity: 1; transform: scale(1) translateY(0); } }
+
+        /* ===== PULSING CTA ===== */
+        .cta-pulse {
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-pulse::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, #C5DEC5, #7db87d, #C5DEC5);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            animation: ctaGlow 3s ease-in-out infinite;
+        }
+        .cta-pulse:hover::after { opacity: 0.4; }
+        @keyframes ctaGlow {
+            0%, 100% { filter: blur(15px); transform: scale(1); }
+            50% { filter: blur(25px); transform: scale(1.05); }
+        }
+
+        /* ===== STAT COUNTERS ===== */
+        .counter { display: inline-block; }
+        .stat-card { position: relative; overflow: hidden; }
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(197,222,197,0.05), transparent 30%);
+            animation: rotateBg 6s linear infinite;
+        }
+        @keyframes rotateBg {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== SECTION DIVIDERS ===== */
+        .section-wave {
+            position: relative;
+        }
+        .section-wave::before {
+            content: '';
+            position: absolute;
+            top: -1px;
             left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(180deg, #111111 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        /* ===== IMAGE REVEAL ===== */
+        .img-reveal {
+            overflow: hidden;
+            position: relative;
+        }
+        .img-reveal img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .img-reveal:hover img {
+            transform: scale(1.08);
+        }
+        .img-reveal::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(17,17,17,0.6) 100%);
+            pointer-events: none;
+        }
+
+        /* ===== ANIMATED UNDERLINE LINKS ===== */
+        .link-animated {
+            position: relative;
+        }
+        .link-animated::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #C5DEC5;
+            transition: width 0.3s ease;
+        }
+        .link-animated:hover::after { width: 100%; }
+
+        /* ===== PILL TAG ANIMATION ===== */
+        .tag-glow {
+            position: relative;
+            overflow: hidden;
+        }
+        .tag-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #C5DEC5, transparent);
-            border-radius: 2px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: tagShine 3s ease-in-out infinite;
+        }
+        @keyframes tagShine {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
         }
 
-        /* Mobile menu */
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
-
-        /* Scroll progress */
+        /* ===== SCROLL PROGRESS ===== */
         #scroll-progress {
             transform-origin: left;
             transform: scaleX(0);
             transition: transform 0.1s linear;
+            background: linear-gradient(90deg, #C5DEC5, #7db87d);
         }
 
-        /* Image zoom on hover */
-        .img-zoom {
-            overflow: hidden;
+        /* ===== MOBILE MENU ===== */
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .mobile-menu.open { transform: translateX(0); }
+
+        /* ===== PARALLAX LAYER ===== */
+        .parallax-slow { transition: transform 0.1s linear; }
+
+        /* ===== FOCUS RING ===== */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid #C5DEC5;
+            outline-offset: 2px;
+            border-radius: 4px;
         }
-        .img-zoom img {
-            transition: transform 0.6s ease;
-        }
-        .img-zoom:hover img {
-            transform: scale(1.05);
-        }
+
+        /* ===== SMOOTH SCROLL ===== */
+        html { scroll-behavior: smooth; }
+
+        /* ===== PARTICLE CANVAS ===== */
+        #particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
     </style>
 </head>
 <body class="bg-coal-900 text-white antialiased">
@@ -215,35 +345,38 @@
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <!-- Background gradient -->
         <div class="absolute inset-0 bg-gradient-to-br from-coal-900 via-coal-800 to-coal-900"></div>
-        <!-- Decorative sage circles -->
-        <div class="absolute top-20 -left-32 w-96 h-96 bg-sage-200/5 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-20 -right-32 w-96 h-96 bg-sage-200/5 rounded-full blur-3xl"></div>
+        <!-- Floating orbs -->
+        <div class="hero-orb w-[500px] h-[500px] bg-sage-200/8 top-[-10%] left-[-10%]"></div>
+        <div class="hero-orb hero-orb-2 w-[400px] h-[400px] bg-sage-400/5 bottom-[-5%] right-[-5%]"></div>
+        <div class="hero-orb hero-orb-3 w-[300px] h-[300px] bg-sage-300/6 top-[40%] right-[20%]"></div>
+        <!-- Particle canvas -->
+        <canvas id="particles"></canvas>
         <!-- Subtle grid pattern -->
         <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23C5DEC5%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
 
         <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
-            <div class="reveal mb-8">
-                <img src="images/logo-rectangle.png" alt="Casual Minds Matter" class="h-20 sm:h-28 mx-auto rounded-xl shadow-2xl shadow-sage-200/10">
+            <div class="hero-logo mb-8">
+                <img src="images/logo-rectangle.png" alt="Casual Minds Matter" class="h-20 sm:h-28 mx-auto rounded-xl shadow-2xl shadow-sage-200/20">
             </div>
-            <h1 class="reveal text-4xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.1] mb-6">
+            <h1 class="hero-title text-4xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.1] mb-6">
                 Practical support<br>
                 <span class="gradient-text">before crisis deepens</span>
             </h1>
-            <p class="reveal text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p class="hero-subtitle text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
                 Casual Minds Matter CIC provides accessible, non-stigmatising mental health, wellbeing and housing support from our base at Howe Walk in Burnley.
             </p>
-            <div class="reveal flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold bg-sage-200 text-coal-900 rounded-full hover:bg-sage-300 transition-all hover:shadow-lg hover:shadow-sage-200/20">
+            <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contact" class="cta-pulse inline-flex items-center justify-center px-8 py-4 text-base font-bold bg-sage-200 text-coal-900 rounded-full hover:bg-sage-300 transition-all hover:shadow-lg hover:shadow-sage-200/30 hover:scale-105">
                     Get Support
                     <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </a>
-                <a href="#about" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold border border-white/20 text-white rounded-full hover:bg-white/5 transition-all">
+                <a href="#about" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold border border-white/20 text-white rounded-full hover:bg-white/5 hover:border-sage-200/30 transition-all hover:scale-105">
                     Learn More
                 </a>
             </div>
 
             <!-- Scroll indicator -->
-            <div class="reveal absolute bottom-8 left-1/2 -translate-x-1/2">
+            <div class="hero-cta absolute bottom-8 left-1/2 -translate-x-1/2">
                 <div class="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center pt-2">
                     <div class="w-1.5 h-3 bg-sage-200 rounded-full animate-bounce"></div>
                 </div>
@@ -481,25 +614,25 @@
 
             <!-- Impact stats -->
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                <div class="reveal glow-card bg-gradient-to-br from-sage-200/10 to-transparent border border-sage-200/10 rounded-2xl p-8 text-center">
+                <div class="reveal glow-card stat-card bg-gradient-to-br from-sage-200/10 to-transparent border border-sage-200/10 rounded-2xl p-8 text-center">
                     <div class="text-5xl sm:text-6xl font-black text-sage-200 mb-2">30</div>
                     <p class="text-gray-300 font-medium">People supported into housing</p>
                     <p class="text-gray-500 text-sm mt-1">in Burnley during 2025</p>
                 </div>
 
-                <div class="reveal glow-card bg-gradient-to-br from-sage-200/10 to-transparent border border-sage-200/10 rounded-2xl p-8 text-center">
+                <div class="reveal glow-card stat-card bg-gradient-to-br from-sage-200/10 to-transparent border border-sage-200/10 rounded-2xl p-8 text-center">
                     <div class="text-5xl sm:text-6xl font-black text-sage-200 mb-2">4+</div>
                     <p class="text-gray-300 font-medium">Years of operation</p>
                     <p class="text-gray-500 text-sm mt-1">since January 2022</p>
                 </div>
 
-                <div class="reveal glow-card bg-gradient-to-br from-sage-200/10 to-transparent border border-sage-200/10 rounded-2xl p-8 text-center">
+                <div class="reveal glow-card stat-card bg-gradient-to-br from-sage-200/10 to-transparent border border-sage-200/10 rounded-2xl p-8 text-center">
                     <div class="text-5xl sm:text-6xl font-black text-sage-200 mb-2">6+</div>
                     <p class="text-gray-300 font-medium">Referral pathways</p>
                     <p class="text-gray-500 text-sm mt-1">with statutory and local services</p>
                 </div>
 
-                <div class="reveal glow-card bg-gradient-to-br from-sage-200/10 to-transparent border border-sage-200/10 rounded-2xl p-8 text-center">
+                <div class="reveal glow-card stat-card bg-gradient-to-br from-sage-200/10 to-transparent border border-sage-200/10 rounded-2xl p-8 text-center">
                     <div class="text-5xl sm:text-6xl font-black text-sage-200 mb-2 text-3xl">Drop-in</div>
                     <p class="text-gray-300 font-medium">No appointment needed</p>
                     <p class="text-gray-500 text-sm mt-1">walk-in access at Howe Walk</p>
@@ -592,18 +725,18 @@
             </div>
 
             <!-- New branding shopfront - hero image -->
-            <div class="reveal img-zoom rounded-2xl overflow-hidden border border-white/[0.06] mb-6">
+            <div class="reveal-scale img-reveal rounded-2xl overflow-hidden border border-white/[0.06] mb-6">
                 <img src="images/howe-walk-new.jpg" alt="Casual Minds Matter new shopfront with 2026 branding at Howe Walk, Burnley" class="w-full h-[400px] object-cover object-center" loading="lazy">
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="reveal img-zoom rounded-2xl overflow-hidden border border-white/[0.06]">
+                <div class="reveal-scale img-reveal rounded-2xl overflow-hidden border border-white/[0.06]">
                     <img src="images/howe-walk-install.jpg" alt="New signage being installed at Howe Walk" class="w-full h-60 object-cover" loading="lazy">
                 </div>
-                <div class="reveal img-zoom rounded-2xl overflow-hidden border border-white/[0.06]">
+                <div class="reveal-scale img-reveal rounded-2xl overflow-hidden border border-white/[0.06]">
                     <img src="images/howe-walk-night.png" alt="Casual Minds Matter shop front at night" class="w-full h-60 object-cover" loading="lazy">
                 </div>
-                <div class="reveal img-zoom rounded-2xl overflow-hidden border border-white/[0.06]">
+                <div class="reveal-scale img-reveal rounded-2xl overflow-hidden border border-white/[0.06]">
                     <img src="images/howe-walk-day.jpg" alt="Casual Minds Matter daytime exterior" class="w-full h-60 object-cover" loading="lazy">
                 </div>
             </div>
@@ -748,10 +881,10 @@
                     Casual Minds Matter is a not-for-profit community interest company. Our income is reinvested in supporting people in Burnley facing mental health difficulties and housing instability. We are actively seeking funding partnerships to expand our reach.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold bg-sage-200 text-coal-900 rounded-full hover:bg-sage-300 transition-all hover:shadow-lg hover:shadow-sage-200/20">
+                    <a href="#contact" class="cta-pulse inline-flex items-center justify-center px-8 py-4 text-base font-bold bg-sage-200 text-coal-900 rounded-full hover:bg-sage-300 transition-all hover:shadow-lg hover:shadow-sage-200/30 hover:scale-105">
                         Partner With Us
                     </a>
-                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold border border-sage-200/30 text-sage-200 rounded-full hover:bg-sage-200/5 transition-all">
+                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold border border-sage-200/30 text-sage-200 rounded-full hover:bg-sage-200/5 hover:border-sage-200/50 transition-all hover:scale-105">
                         Make a Referral
                     </a>
                 </div>
@@ -878,22 +1011,120 @@
 
     <!-- ====== SCRIPTS ====== -->
     <script>
-        // Scroll reveal
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+        // ===== PARTICLE SYSTEM =====
+        (function() {
+            const canvas = document.getElementById('particles');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const count = 40;
+
+            function resize() {
+                canvas.width = canvas.parentElement.offsetWidth;
+                canvas.height = canvas.parentElement.offsetHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 0.5,
+                    speedX: (Math.random() - 0.5) * 0.3,
+                    speedY: (Math.random() - 0.5) * 0.3,
+                    opacity: Math.random() * 0.4 + 0.1
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.x += p.speedX;
+                    p.y += p.speedY;
+                    if (p.x < 0) p.x = canvas.width;
+                    if (p.x > canvas.width) p.x = 0;
+                    if (p.y < 0) p.y = canvas.height;
+                    if (p.y > canvas.height) p.y = 0;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(197, 222, 197, ${p.opacity})`;
+                    ctx.fill();
+                });
+                // Draw connections
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(197, 222, 197, ${0.06 * (1 - dist / 120)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+
+        // ===== SCROLL REVEAL (multi-directional, staggered) =====
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+        const revealObserver = new IntersectionObserver((entries) => {
+            // Group by parent for staggering
+            const parents = new Map();
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('active');
-                    }, index * 100);
-                    observer.unobserve(entry.target);
+                    const parent = entry.target.parentElement;
+                    if (!parents.has(parent)) parents.set(parent, []);
+                    parents.get(parent).push(entry.target);
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            parents.forEach(children => {
+                children.forEach((el, i) => {
+                    setTimeout(() => el.classList.add('active'), i * 120);
+                    revealObserver.unobserve(el);
+                });
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+        revealElements.forEach(el => revealObserver.observe(el));
 
-        reveals.forEach(el => observer.observe(el));
+        // ===== ANIMATED COUNTERS =====
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const text = el.textContent.trim();
+                    const match = text.match(/^([\d.]+)/);
+                    if (match) {
+                        const target = parseFloat(match[1]);
+                        const suffix = text.replace(match[1], '');
+                        const isDecimal = text.includes('.');
+                        const duration = 1500;
+                        const start = performance.now();
+                        function step(now) {
+                            const progress = Math.min((now - start) / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            const current = target * eased;
+                            el.textContent = (isDecimal ? current.toFixed(1) : Math.round(current)) + suffix;
+                            if (progress < 1) requestAnimationFrame(step);
+                        }
+                        requestAnimationFrame(step);
+                    }
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.text-5xl, .text-6xl, .text-4xl').forEach(el => {
+            const text = el.textContent.trim();
+            if (/^\d/.test(text)) counterObserver.observe(el);
+        });
 
-        // Scroll progress bar
+        // ===== SCROLL PROGRESS =====
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -901,27 +1132,32 @@
             document.getElementById('scroll-progress').style.transform = `scaleX(${progress})`;
         });
 
-        // Mobile menu
+        // ===== PARALLAX ON HERO ORBS =====
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            document.querySelectorAll('.hero-orb').forEach((orb, i) => {
+                const speed = 0.15 + i * 0.05;
+                orb.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+        }, { passive: true });
+
+        // ===== MOBILE MENU =====
         const menuBtn = document.getElementById('menu-btn');
         const menuClose = document.getElementById('menu-close');
         const mobileMenu = document.getElementById('mobile-menu');
 
         menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
         menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
-
-        // Close menu on nav link click
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => mobileMenu.classList.remove('open'));
         });
-
-        // Close menu on outside click
         document.addEventListener('click', (e) => {
             if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
                 mobileMenu.classList.remove('open');
             }
         });
 
-        // Smooth scroll offset for fixed nav
+        // ===== SMOOTH SCROLL =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -931,6 +1167,19 @@
                     const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
                     window.scrollTo({ top, behavior: 'smooth' });
                 }
+            });
+        });
+
+        // ===== TILT ON HOVER (cards) =====
+        document.querySelectorAll('.glow-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                card.style.transform = `translateY(-6px) perspective(800px) rotateX(${y * -4}deg) rotateY(${x * 4}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
             });
         });
     </script>
