@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team — Casual Minds Matter CIC</title>
+    <meta name="description" content="Meet the team behind Casual Minds Matter CIC. Experienced, qualified professionals providing mental health and housing support in Burnley.">
+    <meta property="og:title" content="Our Team — Casual Minds Matter CIC">
+    <meta property="og:description" content="Meet the team behind Casual Minds Matter CIC in Burnley.">
+    <meta property="og:image" content="images/logo-rectangle.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="images/logo-square.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: {
+                            50: '#f0f7f0', 100: '#e0efe0', 200: '#C5DEC5', 300: '#a3cda3',
+                            400: '#7db87d', 500: '#5a9f5a', 600: '#468046', 700: '#386538',
+                            800: '#2f512f', 900: '#284328',
+                        },
+                        coal: { 900: '#111111', 800: '#1a1a1a', 700: '#2a2a2a' }
+                    },
+                    fontFamily: {
+                        display: ['"Inter"', 'system-ui', 'sans-serif'],
+                        body: ['"Inter"', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-scale { opacity: 0; transform: scale(0.85); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-scale.active { opacity: 1; transform: scale(1); }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #C5DEC5 0%, #7db87d 50%, #C5DEC5 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            animation: shimmer 4s ease infinite;
+        }
+        @keyframes shimmer { 0% { background-position: 0% center; } 50% { background-position: 100% center; } 100% { background-position: 0% center; } }
+
+        .glow-card { position: relative; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; }
+        .glow-card::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, transparent 0%, rgba(197,222,197,0) 40%, rgba(197,222,197,0.3) 50%, rgba(197,222,197,0) 60%, transparent 100%); background-size: 300% 300%; -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.4s ease; }
+        .glow-card:hover::before { opacity: 1; animation: borderGlow 2s linear infinite; }
+        .glow-card:hover { transform: translateY(-6px); box-shadow: 0 25px 80px rgba(197, 222, 197, 0.12), 0 0 40px rgba(197, 222, 197, 0.05); }
+        @keyframes borderGlow { 0% { background-position: 0% 0%; } 50% { background-position: 100% 100%; } 100% { background-position: 0% 0%; } }
+
+        .cta-pulse { position: relative; overflow: hidden; }
+        .cta-pulse::after { content: ''; position: absolute; inset: -2px; border-radius: inherit; background: linear-gradient(135deg, #C5DEC5, #7db87d, #C5DEC5); opacity: 0; z-index: -1; transition: opacity 0.3s ease; animation: ctaGlow 3s ease-in-out infinite; }
+        .cta-pulse:hover::after { opacity: 0.4; }
+        @keyframes ctaGlow { 0%, 100% { filter: blur(15px); transform: scale(1); } 50% { filter: blur(25px); transform: scale(1.05); } }
+
+        #scroll-progress { transform-origin: left; transform: scaleX(0); transition: transform 0.1s linear; background: linear-gradient(90deg, #C5DEC5, #7db87d); }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .mobile-menu.open { transform: translateX(0); }
+
+        a:focus-visible, button:focus-visible { outline: 2px solid #C5DEC5; outline-offset: 2px; border-radius: 4px; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-coal-900 text-white antialiased">
+
+    <div id="scroll-progress" class="fixed top-0 left-0 w-full h-[3px] bg-sage-200 z-[60]"></div>
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 bg-coal-900 border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="images/logo-rectangle.png" alt="Casual Minds Matter" class="h-10 sm:h-12 rounded-md">
+                </a>
+                <div class="hidden md:flex items-center gap-1">
+                    <a href="index.html" class="px-3 py-2 text-sm text-gray-300 hover:text-sage-200 transition-colors rounded-lg hover:bg-white/5">Home</a>
+                    <a href="services.html" class="px-3 py-2 text-sm text-gray-300 hover:text-sage-200 transition-colors rounded-lg hover:bg-white/5">Services</a>
+                    <a href="team.html" class="px-3 py-2 text-sm text-sage-200 bg-white/5 rounded-lg">Team</a>
+                    <a href="premises.html" class="px-3 py-2 text-sm text-gray-300 hover:text-sage-200 transition-colors rounded-lg hover:bg-white/5">Premises</a>
+                    <a href="news.html" class="px-3 py-2 text-sm text-gray-300 hover:text-sage-200 transition-colors rounded-lg hover:bg-white/5">News</a>
+                    <a href="index.html#contact" class="ml-2 px-5 py-2.5 text-sm font-semibold bg-sage-200 text-coal-900 rounded-full hover:bg-sage-300 transition-colors">Get Support</a>
+                </div>
+                <button id="menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-72 bg-coal-800 border-l border-white/10 md:hidden z-50 p-6">
+            <button id="menu-close" class="absolute top-4 right-4 p-2 text-gray-400 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div class="mt-12 flex flex-col gap-2">
+                <a href="index.html" class="nav-link px-4 py-3 text-gray-300 hover:text-sage-200 hover:bg-white/5 rounded-lg transition-colors">Home</a>
+                <a href="services.html" class="nav-link px-4 py-3 text-gray-300 hover:text-sage-200 hover:bg-white/5 rounded-lg transition-colors">Services</a>
+                <a href="team.html" class="nav-link px-4 py-3 text-sage-200 bg-white/5 rounded-lg">Team</a>
+                <a href="premises.html" class="nav-link px-4 py-3 text-gray-300 hover:text-sage-200 hover:bg-white/5 rounded-lg transition-colors">Premises</a>
+                <a href="news.html" class="nav-link px-4 py-3 text-gray-300 hover:text-sage-200 hover:bg-white/5 rounded-lg transition-colors">News</a>
+                <a href="index.html#contact" class="nav-link mt-4 px-5 py-3 text-center font-semibold bg-sage-200 text-coal-900 rounded-full hover:bg-sage-300 transition-colors">Get Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====== HERO BANNER ====== -->
+    <section class="pt-32 pb-16 relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-coal-900 via-coal-800 to-coal-900"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <p class="text-sage-200 font-semibold text-sm tracking-widest uppercase mb-4">Our People</p>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">Our Team</h1>
+            <p class="text-gray-400 text-lg mt-4 max-w-2xl">Experienced, qualified professionals who understand Burnley and the people who live here.</p>
+        </div>
+    </section>
+
+    <!-- ====== TEAM ====== -->
+    <section id="team" class="py-24 sm:py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-3 gap-6">
+                <div class="reveal glow-card bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 text-center">
+                    <div class="w-20 h-20 bg-sage-200/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-sage-200">DB</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">Dave Burnett</h3>
+                    <p class="text-sage-200 text-sm font-medium mb-4">Director</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">35+ years in management. 4 years leading CMM. Extensive experience in homelessness, mental health, and rehabilitation. The driving force behind CMM's growth from a single idea to a fully operational support service.</p>
+                </div>
+
+                <div class="reveal glow-card bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 text-center">
+                    <div class="w-20 h-20 bg-sage-200/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-sage-200">SB</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">Sue Blackshaw</h3>
+                    <p class="text-sage-200 text-sm font-medium mb-4">Director of Counselling</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">IBA Hons in Counselling &amp; Psychotherapy. Qualified supervisor. Specialist in Brainspotting and The Rewind Technique for trauma recovery. Brings clinical depth to CMM's therapeutic offer.</p>
+                </div>
+
+                <div class="reveal glow-card bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 text-center">
+                    <div class="w-20 h-20 bg-sage-200/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-sage-200">AW</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">Amanda Waterworth</h3>
+                    <p class="text-sage-200 text-sm font-medium mb-4">Mental Health Practitioner</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">RGN, RMN, BA(Hons). Person-centred accreditation. EMDR trained. Combines nursing expertise with therapeutic skills to support people with complex overlapping needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== COMMUNITY ====== -->
+    <section id="community" class="py-24 sm:py-32 bg-white/[0.02] relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal text-center max-w-3xl mx-auto mb-16">
+                <p class="text-sage-200 font-semibold text-sm tracking-widest uppercase mb-4">Community</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                    Backed by Burnley
+                </h2>
+                <p class="text-gray-400 text-lg mt-4">Our strength comes from the community around us. Local people fundraise, volunteer, and spread the word — because they've seen the difference CMM makes.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-6">
+                <div class="reveal glow-card bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8">
+                    <div class="text-3xl font-black text-sage-200 mb-3">3.1K</div>
+                    <h4 class="font-bold mb-2">Facebook Followers</h4>
+                    <p class="text-gray-400 text-sm">An active, engaged community sharing our work, attending groups, and supporting each other online and in person.</p>
+                </div>
+
+                <div class="reveal glow-card bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8">
+                    <div class="text-3xl font-black text-sage-200 mb-3">~£5.78</div>
+                    <h4 class="font-bold mb-2">Cost Per Group Session</h4>
+                    <p class="text-gray-400 text-sm">A recent community donation of £520 funded approximately 90 group therapy sessions — exceptional value for every pound raised.</p>
+                </div>
+
+                <div class="reveal glow-card bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8">
+                    <div class="text-3xl font-black text-sage-200 mb-3">Active</div>
+                    <h4 class="font-bold mb-2">Community Fundraising</h4>
+                    <p class="text-gray-400 text-sm">Local families organise fundraising events, sponsored challenges, and awareness campaigns in memory of loved ones — turning loss into positive change.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CTA ====== -->
+    <section class="py-24 sm:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-sage-200/5 to-sage-200/10"></div>
+        <div class="absolute -top-40 -right-40 w-[500px] h-[500px] bg-sage-200/5 rounded-full blur-3xl"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+            <div class="reveal">
+                <p class="text-sage-200 font-semibold text-sm tracking-widest uppercase mb-4">Join Us</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6">
+                    Want to get involved?
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Whether you want to volunteer, fundraise, or partner with us — we would love to hear from you.
+                </p>
+                <a href="index.html#contact" class="cta-pulse inline-flex items-center justify-center px-8 py-4 text-base font-bold bg-sage-200 text-coal-900 rounded-full hover:bg-sage-300 transition-all hover:shadow-lg hover:shadow-sage-200/30 hover:scale-105">
+                    Get In Touch
+                    <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="border-t border-white/[0.06] py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
+                <div class="flex items-center gap-4">
+                    <img src="images/logo-rectangle.png" alt="Casual Minds Matter" class="h-10 rounded-md">
+                    <div>
+                        <p class="font-semibold text-sm">Casual Minds Matter C.I.C.</p>
+                        <p class="text-gray-500 text-xs">Company No. 13829906 &middot; Registered in England &amp; Wales</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6 text-gray-500 text-sm">
+                    <a href="index.html" class="hover:text-sage-200 transition-colors">Home</a>
+                    <a href="services.html" class="hover:text-sage-200 transition-colors">Services</a>
+                    <a href="team.html" class="hover:text-sage-200 transition-colors">Team</a>
+                    <a href="premises.html" class="hover:text-sage-200 transition-colors">Premises</a>
+                    <a href="index.html#contact" class="hover:text-sage-200 transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="https://www.facebook.com/CasualMindsMatterCIC" target="_blank" rel="noopener" class="text-gray-500 hover:text-sage-200 transition-colors" aria-label="Facebook">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/casualmindsmatter" target="_blank" rel="noopener" class="text-gray-500 hover:text-sage-200 transition-colors" aria-label="Instagram">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-white/[0.06] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-gray-600 text-xs">Registered Office: 4 Howe Walk, Burnley BB11 1QB</p>
+                <p class="text-gray-600 text-xs">&copy; 2026 Casual Minds Matter CIC. All rights reserved.</p>
+                <a href="mailto:contact@casualmindsmatter.com" class="text-gray-600 text-xs hover:text-gray-400 transition-colors">contact@casualmindsmatter.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== SCROLL REVEAL =====
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+        const revealObserver = new IntersectionObserver((entries) => {
+            const parents = new Map();
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const parent = entry.target.parentElement;
+                    if (!parents.has(parent)) parents.set(parent, []);
+                    parents.get(parent).push(entry.target);
+                }
+            });
+            parents.forEach(children => {
+                children.forEach((el, i) => {
+                    setTimeout(() => el.classList.add('active'), i * 120);
+                    revealObserver.unobserve(el);
+                });
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ===== SCROLL PROGRESS =====
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = scrollTop / docHeight;
+            document.getElementById('scroll-progress').style.transform = `scaleX(${progress})`;
+        });
+
+        // ===== MOBILE MENU =====
+        const menuBtn = document.getElementById('menu-btn');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        });
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('open');
+            }
+        });
+
+        // ===== TILT ON HOVER =====
+        document.querySelectorAll('.glow-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                card.style.transform = `translateY(-6px) perspective(800px) rotateX(${y * -4}deg) rotateY(${x * 4}deg)`;
+            });
+            card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+        });
+    </script>
+</body>
+</html>
