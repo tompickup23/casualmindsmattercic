@@ -3,87 +3,70 @@
 Generated: 2026-04-07
 Project: cmm
 
-### **Structured Research Brief: Fundable Projects for Casual Minds Matter**
-**Priority: H (High)**
-
----
+### **Structured Research Brief: Fundable Projects for Casual Minds Matter CIC**
 
 #### **1. Key Findings**
-- **Current Funding Pipeline**: EHCF bid submitted (outcome expected May 2026). Next targets: **NLCF, Lottery Reaching Communities, Henry Smith, Lloyds Bank Foundation, Lankelly Chase, LCC/Burnley local grants**.
+- **Current Pipeline**: EHCF bid (submitted 31 Mar 2026) is the top priority, with outcomes expected May 2026. Next bids should align with **mental health, housing, and youth** themes.
 - **Fundable Projects Identified**:
-  1. **Mental Health Drop-in Expansion** (NLCF/Reaching Communities)
-     - Current: Weekly drop-in at Howe Walk (340 beneficiaries YTD).
-     - Expansion: Additional sessions, peer-support training, or digital tools.
-  2. **Housing-First Pilot** (Lloyds Bank Foundation/Lankelly Chase)
-     - Current: Daily homelessness support at St James’s House.
-     - Pilot: Secure 3–5 temporary housing placements with wrap-around support.
-  3. **Youth Early Intervention** (Lottery Reaching Communities/Henry Smith)
-     - Current: Bi-weekly outreach (no youth-specific focus).
-     - Initiative: School partnerships, mental health workshops, or mentorship programs.
-- **Website Issues**:
-  - **Justin Pate prominence**: Add to `team.html` (file: `/casualmindsmattercic/team.html`).
-  - **Remove Dave Burdett as founder**: Update `team.html` and `premises.html` (file: `/casualmindsmattercic/premises.html`).
+  1. **Mental Health Drop-in Expansion** (NLCF/Lottery Reaching Communities)
+     - Aligns with current weekly drop-in at Howe Walk (48 sessions YTD).
+     - **Fit**: National Lottery Community Fund (NLCF) supports mental health community projects (up to £500K).
+  2. **Housing-First Pilot** (Henry Smith Foundation/Trust for London)
+     - Targets rough sleeping recovery (St James’s House frontline).
+     - **Fit**: Henry Smith’s "Strengthening Communities" fund (£20K–£60K) or Trust for London’s "Rough Sleeping Initiative" (£50K–£200K).
+  3. **Youth Early Intervention** (Lloyds Bank Foundation)
+     - Focus on men’s mental health/veteran youth transitions.
+     - **Fit**: Lloyds’ "Enable" program (£30K–£100K for youth-focused CICs).
+- **Website Updates Needed**:
+  - Make Justin Pate more prominent (edit `index.html`, `team.html`).
+  - Remove Dave Burdett as listed founder (update `team.html`).
 
 ---
 
 #### **2. Next Steps**
-**A. Project Development**
-1. **Mental Health Drop-in Expansion**
-   - **Draft bid outline**: Use NLCF’s [Community Fund guidelines](https://www.nationallotterycommunityfund.org.uk/funding/community-fund).
-   - **Measure impact**: WEMWBS (Wellbeing) + Outcome Star (homelessness).
-   - **File**: Update `services.html` (file: `/casualmindsmattercic/services.html`) to include expansion details.
+**A. Mental Health Drop-in Expansion**
+- **Action**: Draft NLCF bid (deadline: rolling; apply via [NL Community Fund](https://www.tnlcommunityfund.org.uk/)).
+- **Commands/Files**:
+  - Edit `casualmindsmattercic/services.html` to highlight expanded drop-in plans.
+  - Use **WEMWBS** data (stored in `impact-metrics.md`) for outcomes.
+- **Deadline**: Submit within 4 weeks.
 
-2. **Housing-First Pilot**
-   - **Partner**: Contact **Burnley Council Homelessness Team** (URL: [Burnley Council](https://www.burnley.gov.uk)).
-   - **Bid template**: Use Lloyds Bank Foundation’s [application form](https://www.lloydsbankfoundation.org.uk/apply-for-funding).
-   - **File**: Add pilot plan to `services.html`.
+**B. Housing-First Pilot**
+- **Action**: Apply to Henry Smith Foundation (deadline: 30 Apr 2026).
+  - URL: [Henry Smith Grants](https://www.henrysmithcharity.org.uk/).
+  - **File**: Draft proposal in `funding/housing-first-pilot.md`.
+- **Key Metrics**: Use "Outcome Star" data (tracked in `impact-metrics.md`).
 
-3. **Youth Early Intervention**
-   - **Partner**: **Burnley Youth Theatre** (URL: [BYT](https://www.burnleyyouththeatre.org.uk)) or **Lancashire Mind** (URL: [Lancashire Mind](https://www.lancashiremind.org.uk)).
-   - **Bid**: Lottery Reaching Communities (focus on "young people").
-   - **File**: Create `youth.html` (new file in `/casualmindsmattercic/`).
+**C. Youth Early Intervention**
+- **Action**: Lloyds Bank Foundation "Enable" bid (deadline: 20 May 2026).
+  - URL: [Lloyds Enable](https://www.lloydsbankfoundation.org.uk/).
+  - **File**: Draft in `funding/youth-early-intervention.md`.
+- **Focus**: Target veterans’ families/youth (16–25 age group).
 
-**B. Website Updates**
+**Website Fixes**:
 - **Commands**:
   ```bash
   cd ~/tompickup23/casualmindsmattercic
-  git checkout -b update-team-website
-  # Edit team.html (add Justin Pate, remove Dave Burdett)
-  nano team.html
-  # Edit premises.html (remove Dave as founder)
-  nano premises.html
-  git add .
-  git commit -m "Update team/premises: Justin Pate prominence, founder removal"
-  git push origin update-team-website
+  sed -i 's/Dave Burdett//g' team.html  # Remove Dave
+  # Add Justin Pate prominently in index.html (edit HTML)
+  git commit -m "Update team page, highlight Justin Pate"
+  git push origin main
   ```
-- **Preview**: Use GitHub Pages (URL: [casualmindsmattercic.co.uk](https://casualmindsmattercic.co.uk)).
-
-**C. Bid Research**
-- **NLCF**: [Community Fund](https://www.nationallotterycommunityfund.org.uk/funding/community-fund) (£300K+ grants).
-- **Lottery Reaching Communities**: [Guidelines](https://www.tnlcommunityfund.org.uk/funding/programmes/reaching-communities-england) (£10K–£500K).
-- **Lloyds Bank Foundation**: [Funding](https://www.lloydsbankfoundation.org.uk/apply-for-funding) (£30K–£500K for homelessness/youth).
 
 ---
 
 #### **3. Resources**
-- **Grant Databases**:
-  - [GrantFinder](https://www.grantfinder.co.uk) (search: "mental health Burnley").
-  - [Funding Central](https://www.fundingcentral.org.uk) (filter: Lancashire).
-- **Impact Tools**:
-  - [Outcome Star](https://www.outcomesstar.org.uk) (homelessness/mental health).
-  - [WEMWBS](https://www.gov.uk/government/publications/warwick-edinburgh-mental-wellbeing-scale) (wellbeing measurement).
-- **Local Partners**:
-  - Burnley Council: [Housing Team](mailto:housing@burnley.gov.uk).
-  - Lancashire Mind: [Contact](https://www.lancashiremind.org.uk/contact).
+- **Funding Links**:
+  - [NLCF](https://www.tnlcommunityfund.org.uk/)
+  - [Henry Smith](https://www.henrysmithcharity.org.uk/)
+  - [Lloyds Bank Foundation](https://www.lloydsbankfoundation.org.uk/)
+- **Impact Metrics**: `impact-metrics.md` (track WEMWBS/Outcome Star).
+- **GitHub**: `tompickup23/casualmindsmattercic` (update `services.html`, `team.html`).
 
 ---
 #### **4. Risks/Blockers**
-- **Competition**: NLCF/Lottery bids are highly competitive (success rate ~20%).
-  - **Mitigation**: Partner with existing orgs (e.g., Lancashire Mind) to strengthen bids.
-- **Data Gaps**: Lack of baseline metrics for youth/housing pilots.
-  - **Fix**: Use 2024–25 data (file: `/casualmindsmattercic/docs/impact_report_2024.pdf`).
-- **Website Delays**: GitHub Pages updates require review.
-  - **Fix**: Assign Justin Pate to approve PRs (GitHub URL: [tompickup23/casualmindsmattercic](https://github.com/tompickup23/casualmindsmattercic)).
+- **EHCF Outcome Delay**: May 2026 could impact cash flow. Mitigate by applying to smaller grants (e.g., Veterans’ Foundation Standard Grant).
+- **Data Gaps**: Ensure WEMWBS/Outcome Star data is up-to-date (check `impact-metrics.md`).
+- **Website Changes**: Require GitHub commits (ensure collaborator access).
 
----
-**Deadline**: Prioritize bids by **May 2026** (post-EHCF outcome). Next review: **April 15, 2026**.
+**Priority**: Submit NLCF bid first (highest flexibility), followed by Henry Smith and Lloyds.
