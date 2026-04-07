@@ -3,80 +3,102 @@
 Generated: 2026-04-07
 Project: cmm
 
-## Research Brief: Reusable Grant Boilerplate for Casual Minds Matter CIC
+### **Research Brief: Casual Minds Matter Grant Boilerplate**
+**Priority:** H | **Status:** Grant Pipeline Development
 
-### Key Findings
+---
 
-* Casual Minds Matter CIC has submitted an EHCF bid and is awaiting the outcome, expected in May 2026.
-* The organization has a current income target of £133K and uses measures such as WEMWBS, Outcome Star, and cost-per-outcome.
-* Potential next grant bids include:
-	+ NLCF (National Lottery Community Fund)
-	+ Lottery Reaching Communities
-	+ Henry Smith Foundation
-	+ Lloyds Bank Foundation
-	+ Lankelly Chase
-	+ LCC/Burnley local grants
-* Fundable projects include:
-	+ Mental health drop-in expansion
-	+ Housing-first pilot
-	+ Youth early intervention
-	+ Volunteer training
-* Current impact data:
-	+ 340 beneficiaries YTD
-	+ 48 sessions
-	+ 85 referrals
-	+ 12 volunteers
-	+ 2 paid staff
-	+ 3 trustees
-* Website issues:
-	+ Make Justin Pate more prominent
-	+ Remove Dave as listed founder
+### **1. Key Findings**
+- **Organisational Data:**
+  - CMM is a CIC (Companies House: `casualmindsmattercic`).
+  - **Impact YTD (2025-26):**
+    - 340 beneficiaries, 48 sessions, 85 referrals, 12 volunteers, 2 staff, 3 trustees.
+    - Services: Mental health drop-in (Howe Walk), homelessness support (St James’s House), outreach, benefits advice.
+  - **Fundable Projects:** Mental health drop-in expansion, housing-first pilot, youth early intervention, volunteer training.
+  - **Measurement Tools:** WEMWBS, Outcome Star, cost-per-outcome (target: £133K income).
 
-Relevant files and data:
+- **Grant Pipeline:**
+  - **EHCF Bid:** Submitted (outcome expected May 2026).
+  - **Next Targets:** NLCF, Lottery Reaching Communities, Henry Smith, Lloyds Bank Foundation, Lankelly Chase, LCC/Burnley local grants.
+  - **Veterans’ Grants:** Veterans’ Foundation (Standard/Salary/Major) — conditional fit (requires veteran-specific beneficiaries).
 
-* GitHub repository: `tom pickup23/casualmindsmattercic`
-* Website: `casualmindsmattercic.co.uk` (static HTML on GitHub Pages)
-* Files: `index.html`, `news.html`, `services.html`, `team.html`, `premises.html`
+- **Website Updates Needed:**
+  - Promote Justin Pate (remove Dave Burdett as founder).
+  - **Files:** `index.html`, `team.html` (GitHub: `tompickup23/casualmindsmattercic`).
 
-### Next Steps
+---
 
-1. **Update Website**:
-	* Make Justin Pate more prominent on the website.
-	* Remove Dave as listed founder.
-	* Command: Update `team.html` and `index.html` files in the GitHub repository.
-2. **Develop Grant Boilerplate**:
-	* Create a reusable grant boilerplate template using the current impact data and organizational history.
-	* File path: `grant_boilerplate.docx` (new file to be created)
-3. **Research Grant Opportunities**:
-	* Visit the websites of potential grant funders:
-		- NLCF: [www.tnlcommunityfund.org.uk](http://www.tnlcommunityfund.org.uk)
-		- Lottery Reaching Communities: [www.tnlcommunityfund.org.uk/funding/reaching-communities](http://www.tnlcommunityfund.org.uk/funding/reaching-communities)
-		- Henry Smith Foundation: [www.henrysmithcharitabletrust.org.uk](http://www.henrysmithcharitabletrust.org.uk)
-		- Lloyds Bank Foundation: [www.lloydsbankfoundation.org.uk](http://www.lloydsbankfoundation.org.uk)
-		- Lankelly Chase: [www.lankellychase.org.uk](http://www.lankellychase.org.uk)
-4. **Prepare Project Proposals**:
-	* Develop project proposals for fundable projects:
-		- Mental health drop-in expansion
-		- Housing-first pilot
-		- Youth early intervention
-		- Volunteer training
-	* File path: `project_proposals` (new folder to be created)
+### **2. Next Steps (Actionable)**
+#### **A. Grant Boilerplate Development**
+1. **Extract Impact Data:**
+   - **File:** `news.html` (update YTD stats).
+   - **Command:**
+     ```bash
+     cd ~/projects/casualmindsmattercic && grep -A5 "Impact" news.html
+     ```
+   - **Action:** Update stats in `news.html` and cross-reference with `services.html` for service details.
 
-### Resources
+2. **Organisational History:**
+   - **File:** `premises.html` (add CIC formation date, mission).
+   - **Command:**
+     ```bash
+     cd ~/projects/casualmindsmattercic && cat premises.html | grep -i "about"
+     ```
+   - **Action:** Draft 2-3 sentences for "About Us" section (e.g., "Founded in [YEAR], CMM is a Burnley-based CIC addressing mental health and homelessness...").
 
-* GitHub repository: `tom pickup23/casualmindsmattercic`
-* Website: `casualmindsmattercic.co.uk`
-* Grant funder websites:
-	+ NLCF: [www.tnlcommunityfund.org.uk](http://www.tnlcommunityfund.org.uk)
-	+ Lottery Reaching Communities: [www.tnlcommunityfund.org.uk/funding/reaching-communities](http://www.tnlcommunityfund.org.uk/funding/reaching-communities)
-	+ Henry Smith Foundation: [www.henrysmithcharitabletrust.org.uk](http://www.henrysmithcharitabletrust.org.uk)
-	+ Lloyds Bank Foundation: [www.lloydsbankfoundation.org.uk](http://www.lloydsbankfoundation.org.uk)
-	+ Lankelly Chase: [www.lankellychase.org.uk](http://www.lankellychase.org.uk)
+3. **Outcomes Framework:**
+   - **File:** `ehcf-casual-minds-matter-bid.md` (existing draft).
+   - **Action:** Adapt for other funders:
+     - **WEMWBS:** Link to [NHS Wellbeing Scale](https://www.gov.uk/government/publications/wellbeing-measure-for-adults).
+     - **Outcome Star:** Reference [Triangle Consulting](https://www.outcomesstar.org.uk/).
 
-### Risks/Blockers
+#### **B. Website Updates**
+1. **Promote Justin Pate:**
+   - **File:** `team.html`.
+   - **Command:**
+     ```bash
+     cd ~/projects/casualmindsmattercic && sed -i 's/Dave Burdett/Justin Pate/g' team.html
+     ```
+   - **Action:** Verify changes via GitHub Pages preview.
 
-* Delay in updating the website may impact the organization's credibility.
-* Insufficient information on grant funder websites may hinder the development of project proposals.
-* Limited resources (time, personnel) may impact the ability to prepare and submit grant bids.
+2. **Remove Dave Burdett:**
+   - **File:** `team.html`.
+   - **Command:**
+     ```bash
+     cd ~/projects/casualmindsmattercic && grep -v "Dave Burdett" team.html > temp.html && mv temp.html team.html
+     ```
 
-By following these next steps, Casual Minds Matter CIC can develop a reusable grant boilerplate, research grant opportunities, and prepare project proposals to secure new funding.
+#### **C. Grant Applications**
+1. **NLCF Research:**
+   - **URL:** [NLCF Programmes](https://www.tnlcommunityfund.org.uk/funding/programmes).
+   - **Action:** Identify "Reaching Communities England" as primary fit (supports mental health/homelessness).
+   - **Template:** Use `ehcf-casual-minds-matter-bid.md` as base.
+
+2. **Veterans’ Grants:**
+   - **URL:** [Veterans’ Foundation](https://veteransfoundation.org.uk/).
+   - **Action:** Draft veteran-specific case study (e.g., "Veteran A: Housing stability achieved via CMM’s support").
+
+---
+
+### **3. Resources**
+- **Impact Tools:**
+  - [WEMWBS Guide](https://www.gov.uk/government/publications/wellbeing-measure-for-adults).
+  - [Outcome Star](https://www.outcomesstar.org.uk/).
+- **Grant Tracker:**
+  - **File:** `Grant Pipeline (16 Mar 2026)` (referenced in repo).
+- **Website:**
+  - [Casual Minds Matter](https://casualmindsmattercic.co.uk).
+
+---
+
+### **4. Risks/Blockers**
+- **Data Gaps:**
+  - Missing annual income figure (check Companies House).
+  - **Action:** Pull accounts from [Companies House](https://find-and-update.company-information.service.gov.uk/).
+- **Veterans’ Grants:**
+  - Requires veteran beneficiaries (verify caseload).
+- **Website Changes:**
+  - GitHub Pages deployment delays (test locally first).
+
+---
+**Next Review:** Post-EHCF outcome (May 2026).
